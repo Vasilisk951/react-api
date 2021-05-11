@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { SIGN_IN_REQUEST, SIGN_IN_SUCCESS } from '../actions';
+import { SIGN_IN_REQUEST } from '../actions';
 
 import HomePageLayout from '../components/HomePageLayout'
 
@@ -36,22 +36,12 @@ const HomePageContainer = () => {
     const handleSubmit = useCallback((event) => {
         event.preventDefault()
         dispath(SIGN_IN_REQUEST(loginValue));
+        handleCloseModal();
     }, [loginValue, dispath]);
-
-    const signIn_SUCCESS = useEffect(() => {
-        if (isAuth.isAuth === true) {
-            handleCloseModal()
-        }
-        handleChange({ email: '', password: '' });
-    }, [isAuth.isAuth])
 
     const handleLogOut = () => {
         localStorage.clear();
     };
-
-
-
-
 
     return <HomePageLayout
         modalClass={modal}

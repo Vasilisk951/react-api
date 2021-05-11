@@ -2,10 +2,7 @@ import React from 'react';
 
 import { Button, TextField, Typography, Box } from '@material-ui/core/';
 
-
-
 import './index.css'
-
 
 const HomePageLayout = ({
     modalClass,
@@ -27,7 +24,14 @@ const HomePageLayout = ({
                 }
             </div>
             <Box className='market'>
-                <Button className='market__btn' variant="contained" color="primary" href="/market">Market</Button>
+                <Button
+                    className='market__btn'
+                    variant="contained"
+                    color="primary"
+                    href="/market"
+                >
+                    Market
+                </Button>
 
             </Box>
             <div className={modalClass}>

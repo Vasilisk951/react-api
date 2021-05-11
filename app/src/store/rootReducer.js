@@ -6,16 +6,27 @@ import storage from 'redux-persist/lib/storage'
 import registrationForm from '../pages/RegistrationPage/reducers';
 import authReducers from '../pages/HomePage/reducers';
 import marketReducer from '../pages/MarketPage/reducers';
+import basketPokemon from '../pages/MarketPage/reducers/basketPokemon.js';
+import pokemonDetails from '../pages/PokemonDetailsPage/reducers';
+import basketPageReducer from '../pages/BasketPage/reducers'
 
-const authBlackListedfields = createBlacklistFilter('authReducer', ['isLoading', 'errors']);
+const authBlackListedfields = createBlacklistFilter('authReducers', ['isLoading', 'errors']);
+
 const persistConfig = {
     key: 'root',
     storage,
-    whiteList: ['auth'],
+    whitelist: ['authReducers', 'basketPokemon', 'basketPageReducer'],
     transforms: [authBlackListedfields]
 }
 
-const rootReducer = combineReducers({ registrationForm, authReducers, marketReducer });
+const rootReducer = combineReducers({
+    registrationForm,
+    authReducers,
+    marketReducer,
+    basketPokemon,
+    pokemonDetails,
+    basketPageReducer
+});
 
 
 export default persistReducer(persistConfig, rootReducer)

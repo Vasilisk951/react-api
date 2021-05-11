@@ -13,7 +13,6 @@ export default function* launchSaga(action) {
         yield (axios.dafaults.headers.Authorization = `Bearer `);
         yield (api.defaults.headers.Authorization = `Bearer ${response.accessToken}`);
     } else {
-        console.log(action)
 
         try {
             yield take(REHYDRATE);

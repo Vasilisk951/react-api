@@ -23,17 +23,21 @@ const MarketLayout = ({
     pokemons,
     capitalizeFirstLetter,
     hendlePokemonBuy,
-    basketPokemon
+    handleGoToDetails,
+    pages,
+    handleChangePage
 }) => {
+
     return (
         <Box>
-            <HeaderContainer basketPokemon={basketPokemon} />
+            <HeaderContainer />
 
             <Box className='card'>
                 {pokemons.isLoading ? <CircularProgress /> : pokemons.data.map(pokemon => (
                     <Card className='card__item' key={pokemon.id}>
                         <CardActionArea>
                             <CardMedia
+                                onClick={() => handleGoToDetails(pokemon.id)}
                                 className='card__item__img'
                                 image={pokemon.image}
                                 title={pokemon.name}
@@ -48,13 +52,23 @@ const MarketLayout = ({
                             <Button
                                 variant="contained"
                                 color="primary"
-                                id={pokemon.id}
-                                onClick={event => hendlePokemonBuy(event)}
+                                onClick={() => hendlePokemonBuy(pokemon.id)}
                             >
                                 ${pokemon.price}
                             </Button>
                         </CardActions>
                     </Card>
+                ))}
+            </Box>
+            <Box className='pagination'>
+                {pages.map(index => (
+                    <Box
+                        key={index}
+                        className='pagination__btn'
+                        onClick={() => handleChangePage(index)}
+                    >
+                        {index}
+                    </Box>
                 ))}
             </Box>
         </Box>

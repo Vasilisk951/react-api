@@ -21,9 +21,11 @@ const marketReducer = handleActions({
         ...state,
         isLoading: false,
         errors: payload
-    })
+    }),
 }, initialState)
 
+
 export default marketReducer;
+
 
 

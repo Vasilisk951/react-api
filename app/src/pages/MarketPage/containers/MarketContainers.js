@@ -1,50 +1,56 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../actions';
+import { useHistory } from 'react-router-dom';
+import ROUTES from '../../../routes/routesNames';
 
 import MarketLayout from '../components/MarketLayout'
 
 
 const MarketContainers = () => {
 
+    const history = useHistory();
     const dispatch = useDispatch();
-    const pokemons = useSelector(state => state.marketReducer);
-
-    const [basketPokemon, setBasketPokemon] = useState([]);
+    const marketReducer = useSelector(state => state.marketReducer);
+    const pokemon = marketReducer.data;
+    const pages = []
 
     useEffect(() => {
-        dispatch(actions.GET_POKEMON_REQUEST())
-    }, [])
+        dispatch(actions.GET_POKEMON_REQUEST(1))
+    }, [dispatch])
+
+    const createNumberPages = () => {
+        for (let i = 1; i < 46; i++) {
+            pages.push(i)
+        }
+    }
+    createNumberPages()
 
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    const hendlePokemonBuy = useCallback((event) => {
-        const pokemon = event.target.offsetParent.id;
-        pokemons.data.forEach(pokemons => {
-            if (pokemon == pokemons.id) {
-                setBasketPokemon((state) => {
-                    const stateCopy = state;
-                    stateCopy.push({
-                        id: pokemons.id,
-                        image: pokemons.image,
-                        name: pokemons.name,
-                        price: pokemons.price,
-                        count: 1,
-                    });
-                    return stateCopy
-                })
-            }
-        })
+    const handleBuyPokemon = useCallback((id) => {
+        dispatch(actions.HANDLE_BUY_POKEMON({ id, pokemon }));
+    }, [dispatch, pokemon])
 
-    }, [basketPokemon])
+    const handleGoToDetails = useCallback((id) => {
+        history.push(`${ROUTES.MARKET}/${id}`)
+    }, [])
+
+    const handleChangePage = useCallback((id) => {
+        dispatch(actions.GET_POKEMON_REQUEST(id))
+    }, [dispatch])
+
+
 
     return <MarketLayout
-        pokemons={pokemons}
+        pokemons={marketReducer}
         capitalizeFirstLetter={capitalizeFirstLetter}
-        hendlePokemonBuy={hendlePokemonBuy}
-        basketPokemon={basketPokemon}
+        hendlePokemonBuy={handleBuyPokemon}
+        handleGoToDetails={handleGoToDetails}
+        pages={pages}
+        handleChangePage={handleChangePage}
     />
 }
 

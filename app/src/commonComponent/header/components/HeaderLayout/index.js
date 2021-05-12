@@ -7,9 +7,8 @@ import {
     Link,
     IconButton,
     Badge
-
-
-} from '@material-ui/core/';
+}
+    from '@material-ui/core/';
 import { withStyles } from '@material-ui/core/styles';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
@@ -38,7 +37,7 @@ const HeaderLayout = ({ logOut, anchorEl, handleClick, handleClose, basketQuanti
                 <Box className='header__content'>
                     <Box className='header__basket'>
                         <IconButton href='/basket' aria-label="cart">
-                            <StyledBadge badgeContent={basketQuantity} color="secondary">
+                            <StyledBadge badgeContent={basketQuantity.length} color="secondary">
                                 <ShoppingCartIcon />
                             </StyledBadge>
                         </IconButton>

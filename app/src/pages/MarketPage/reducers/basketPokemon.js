@@ -9,7 +9,6 @@ const initialBasket = {
 const basketPokemonReducer = handleActions({
     [actions.HANDLE_BUY_POKEMON]: (state, { payload }) => {
         const stateCopy = { ...state };
-        console.log(payload)
         const pokemonID = payload.id;
         const pokemonData = payload.pokemon;
         let positionIdInArray;
@@ -18,7 +17,6 @@ const basketPokemonReducer = handleActions({
                 positionIdInArray = i
             }
         }
-        console.log(stateCopy)
         const basket = stateCopy.pokemons.find((item) => item.id === pokemonID)
 
         if (!basket) {
@@ -27,12 +25,12 @@ const basketPokemonReducer = handleActions({
                 image: pokemonData[positionIdInArray].image,
                 name: pokemonData[positionIdInArray].name,
                 price: pokemonData[positionIdInArray].price,
-                count: 1,
+                quantity: 1,
             })
         } else {
             for (let i = 0; i < stateCopy.pokemons.length; i++) {
                 if (stateCopy.pokemons[i].id === pokemonID) {
-                    stateCopy.pokemons[i].count = stateCopy.pokemons[i].count + 1;
+                    stateCopy.pokemons[i].quantity = stateCopy.pokemons[i].quantity + 1;
                 }
             }
         }
@@ -40,15 +38,15 @@ const basketPokemonReducer = handleActions({
     },
     [actions.HANDLE_INCREMENT]: (state, { payload }) => {
         const stateCopy = { ...state }
-        stateCopy.pokemons[payload].count = stateCopy.pokemons[payload].count + 1;
+        stateCopy.pokemons[payload].quantity = stateCopy.pokemons[payload].quantity + 1;
         return stateCopy
     },
     [actions.HANDLE_DECREMENT]: (state, { payload }) => {
         const stateCopy = { ...state }
-        if (stateCopy.pokemons[payload].count === 1) {
+        if (stateCopy.pokemons[payload].quantity === 1) {
             stateCopy.pokemons.splice(payload, 1)
         } else {
-            stateCopy.pokemons[payload].count = stateCopy.pokemons[payload].count - 1;
+            stateCopy.pokemons[payload].quantity = stateCopy.pokemons[payload].quantity - 1;
         }
         return stateCopy
     },

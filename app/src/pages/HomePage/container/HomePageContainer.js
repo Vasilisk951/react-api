@@ -36,7 +36,6 @@ const HomePageContainer = () => {
     const handleSubmit = useCallback((event) => {
         event.preventDefault()
         dispath(SIGN_IN_REQUEST(loginValue));
-        handleCloseModal();
     }, [loginValue, dispath]);
 
     const handleLogOut = () => {

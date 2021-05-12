@@ -9,6 +9,7 @@ import BasketLayout from '../components/BasketLauout'
 const BasketPageContainers = () => {
 
     const products = useSelector(state => state.basketPokemon.pokemons);
+    const userId = useSelector(state => state.authReducers.id)
     const dispatch = useDispatch();
     const [totalPrice, setTotalPrice] = useState();
     let price
@@ -27,8 +28,12 @@ const BasketPageContainers = () => {
     }, [dispatch])
 
     const handleBuyAllPokemons = useCallback(() => {
-        console.log(price)
-        dispatch(action.HANDLE_BUY_ALL_POKEMONS({ products, price }));
+        const order = {
+            customerId: userId,
+            totalPrice: price,
+            itemsList: products
+        }
+        dispatch(action.BUY_POKEMON_REQUEST(order))
         dispatch(actions.HANDLE_REMOVE());
         a()
     }, [dispatch])
@@ -37,7 +42,7 @@ const BasketPageContainers = () => {
         setTotalPrice(() => {
             let sum = 0;
             for (let i = 0; i < products.length; i++) {
-                sum = sum + (products[i].count * products[i].price)
+                sum = sum + (products[i].quantity * products[i].price)
             }
             price = sum
             return sum

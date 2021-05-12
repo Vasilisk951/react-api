@@ -48,12 +48,12 @@ const BasketLayout = ({
                                 <TableCell align="center">
                                     <Button onClick={() => handleDecrement(index)}>-</Button>
                                 </TableCell>
-                                <TableCell align="center">{item.count}</TableCell>
+                                <TableCell align="center">{item.quantity}</TableCell>
                                 <TableCell align="center">
                                     <Button onClick={() => handleIncrement(index)}>+</Button>
                                 </TableCell>
                                 <TableCell align="center">${item.price}</TableCell>
-                                <TableCell align="center">${item.count * item.price}</TableCell>
+                                <TableCell align="center">${item.quantity * item.price}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

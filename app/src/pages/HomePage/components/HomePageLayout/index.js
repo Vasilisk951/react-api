@@ -34,7 +34,7 @@ const HomePageLayout = ({
                 </Button>
 
             </Box>
-            <div className={modalClass}>
+            <div className={isAuth.isAuth ? 'modal' : modalClass} >
                 <div className='modal__fon' onClick={handleCloseModal}></div>
                 <div className='modal__content'>
                     <form onSubmit={event => handleSubmit(event)}>
@@ -57,14 +57,16 @@ const HomePageLayout = ({
                             onChange={(event) => handleLoginChange(event)}
                             required
                         />
+                        <Box margin='10px 0' color='red'> {isAuth.isAuth ? '' : isAuth.errors}</Box>
                         <Button type='submit' variant="contained" color='primary'>ENTER</Button>
+
                     </form>
 
                 </div>
             </div>
 
 
-        </div>
+        </div >
     )
 };
 

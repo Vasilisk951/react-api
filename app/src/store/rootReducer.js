@@ -8,14 +8,15 @@ import authReducers from '../pages/HomePage/reducers';
 import marketReducer from '../pages/MarketPage/reducers';
 import basketPokemon from '../pages/MarketPage/reducers/basketPokemon.js';
 import pokemonDetails from '../pages/PokemonDetailsPage/reducers';
-import basketPageReducer from '../pages/BasketPage/reducers'
+import basketPageReducer from '../pages/BasketPage/reducers';
+import orderList from '../pages/ProfilePage/reducers';
 
 const authBlackListedfields = createBlacklistFilter('authReducers', ['isLoading', 'errors']);
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['authReducers', 'basketPokemon', 'basketPageReducer'],
+    whitelist: ['authReducers', 'basketPokemon'],
     transforms: [authBlackListedfields]
 }
 
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
     marketReducer,
     basketPokemon,
     pokemonDetails,
-    basketPageReducer
+    basketPageReducer,
+    orderList
 });
 
 

@@ -8,7 +8,7 @@ import './index.css';
 
 const ProfilePageLayout = ({
     user,
-    listShop,
+    orderList,
     logOut
 }) => {
     return (
@@ -37,15 +37,14 @@ const ProfilePageLayout = ({
                         history of your purchases
                     </Box>
                     <Box>
-                        {console.log(listShop)}
-                        {listShop.map(item => (
-                            <Box className='history__item'>
-                                <Box className='history__item__head'>Your order number №{item.id}</Box>
+                        {!!!orderList ? '' : orderList.map((item, index) => (
+                            <Box key={index} className='history__item'>
+                                <Box className='history__item__head'>Your order number № {Math.random() * Math.pow(10, 17)}</Box>
                                 <Box className='history__item__body'>
-                                    {item.data.map(pokemon => (
-                                        <Box>
+                                    {item.itemsList.map((pokemon, pokIndex) => (
+                                        <Box key={pokIndex} className='history__item__pokemon'>
                                             <Box>Product name: {pokemon.name}</Box>
-                                            <Box>Quantity: {pokemon.count}</Box>
+                                            <Box>Quantity: {pokemon.quantity}</Box>
                                             <Box>Unit price: ${pokemon.price}</Box>
                                         </Box>
                                     ))}

@@ -7,6 +7,7 @@
 }
 .profile__user {
   flex-grow: 1;
+  margin-right: 20px;
 }
 .profile__history {
   flex-grow: 2;
@@ -25,8 +26,6 @@
 .profile__name {
   font-size: 1.6rem;
   text-transform: uppercase;
-}
-.profile__setting {
 }
 .setting__item {
   font-size: 1.1rem;
@@ -51,8 +50,11 @@
 }
 .history__item__body {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
 }
 .history__item__footer {
   line-height: 40px;
+}
+.history__item__pokemon {
+  margin: 10px 20px;
 }

@@ -7,24 +7,22 @@ const initialState = {
     data: null
 }
 
-const marketReducer = handleActions({
-    [actions.GET_POKEMON_REQUEST]: (state) => ({
+const orderListReducer = handleActions({
+    [actions.GET_ORDER_REQUEST]: (state) => ({
         ...state,
         isLoading: true,
     }),
-    [actions.GET_POKEMON_SUCCESS]: (state, { payload }) => ({
+    [actions.GET_ORDER_SUCCESS]: (state, { payload }) => ({
         ...state,
         isLoading: false,
         data: payload.response,
     }),
-    [actions.GET_POKEMON_FAIL]: (state, { payload }) => ({
+    [actions.GET_ORDER_FAIL]: (state, { payload }) => ({
         ...state,
         isLoading: false,
         errors: payload
     }),
 }, initialState)
 
-export default marketReducer;
 
-
-
+export default orderListReducer;

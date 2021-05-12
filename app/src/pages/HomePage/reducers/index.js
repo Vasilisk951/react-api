@@ -22,6 +22,8 @@ const authReducers = handleActions({
             isAuth: true,
             token: payload.response.accessToken,
             userName: payload.response.firstName,
+            id: payload.response._id
+
         }),
     [actions.SIGN_IN_FAIL]: (state, { payload }) => ({
         ...state,

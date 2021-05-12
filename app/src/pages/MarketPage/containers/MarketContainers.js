@@ -6,7 +6,6 @@ import ROUTES from '../../../routes/routesNames';
 
 import MarketLayout from '../components/MarketLayout'
 
-
 const MarketContainers = () => {
 
     const history = useHistory();
@@ -40,9 +39,13 @@ const MarketContainers = () => {
 
     const handleChangePage = useCallback((id) => {
         dispatch(actions.GET_POKEMON_REQUEST(id))
+
+        window.scroll({
+            top: 0,
+            behavior: 'smooth'
+        })
+
     }, [dispatch])
-
-
 
     return <MarketLayout
         pokemons={marketReducer}

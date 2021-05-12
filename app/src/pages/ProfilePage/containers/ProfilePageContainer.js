@@ -1,5 +1,6 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { GET_ORDER_REQUEST } from '../actions';
 
 import ProfilePageLayout from '../components/ProfilePageLayout'
 
@@ -7,7 +8,13 @@ import ProfilePageLayout from '../components/ProfilePageLayout'
 const ProfilePageContainer = () => {
 
     const user = useSelector(state => state.authReducers);
-    const listShop = useSelector(state => state.basketPageReducer.listShop)
+    const orderList = useSelector(state => state.orderList.data);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(GET_ORDER_REQUEST())
+    }, [dispatch])
 
     const logOut = () => {
         localStorage.clear();
@@ -16,7 +23,7 @@ const ProfilePageContainer = () => {
 
     return <ProfilePageLayout
         user={user}
-        listShop={listShop}
+        orderList={orderList}
         logOut={logOut}
     />
 };

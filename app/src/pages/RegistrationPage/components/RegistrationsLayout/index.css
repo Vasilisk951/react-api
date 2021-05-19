@@ -7,7 +7,13 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
-
+.message {
+  margin: 30px 0;
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  text-decoration: underline;
+}
 .formReg {
   display: flex;
   flex-direction: column;
@@ -20,9 +26,18 @@ form label select {
   padding: 10px 5px;
   font-size: 14px;
 }
+form label input:focus-visible {
+  outline: none;
+}
 .formReg label {
   width: 300px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+}
+.field__name {
+  margin-bottom: 5px;
+}
+.field__name span {
+  color: red;
 }
 .formReg__btn {
   width: 150px;
@@ -39,4 +54,20 @@ form label select {
 }
 .formReg__btn:hover {
   background-color: rgb(161, 255, 20);
+}
+.repeatPassword {
+  padding: 10px;
+  margin-top: 10px;
+  word-spacing: 4px;
+}
+.password__mesage {
+  display: none;
+  padding: 10px;
+  margin-top: 10px;
+  word-spacing: 4px;
+  border: 1px solid blue;
+  border-radius: 10px;
+}
+.password:focus-visible ~ .password__mesage {
+  display: block;
 }

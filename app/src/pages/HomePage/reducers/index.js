@@ -7,7 +7,6 @@ const initialState = {
     errors: null,
     token: null,
     userName: null,
-
 };
 
 const authReducers = handleActions({

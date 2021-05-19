@@ -15,6 +15,7 @@ const PokemonDetailsLayout = ({
     pokemonDetails,
     buyPokemon
 }) => {
+    console.log(pokemonDetails)
     return (
         <Box>
             <HeaderContainer />
@@ -28,6 +29,16 @@ const PokemonDetailsLayout = ({
                         <img className='hero__img-img' src={pokemonDetails.details.image} alt={pokemonDetails.details.name}></img>
                     </Box>
                     <Box className='hero__container'>
+                        <Box className='hero__heading'>Abilities</Box>
+                        <Box className='hero__item hero__item__abilities'>
+                            <Box className='hero__item  hero__item__head'>{pokemonDetails.details.abilities[0].title}</Box>
+                            <Box className='hero__item  hero__item__body'>{pokemonDetails.details.abilities[0].description}</Box>
+                        </Box>
+                        <Box className='hero__item hero__item__abilities'>
+                            <Box className='hero__item  hero__item__head'>{pokemonDetails.details.abilities[1].title}</Box>
+                            <Box className='hero__item  hero__item__body'>{pokemonDetails.details.abilities[1].description}</Box>
+                        </Box>
+                        <Box className='hero__heading'>Stats</Box>
                         <Box className='hero__item hero__item-hp'>
                             <Box>{pokemonDetails.details.stats[0].title}</Box>
                             <Box>{pokemonDetails.details.stats[0].value}</Box>

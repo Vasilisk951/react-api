@@ -6,26 +6,14 @@ import {
     MenuItem,
     Link,
     IconButton,
-    Badge
 }
     from '@material-ui/core/';
-import { withStyles } from '@material-ui/core/styles';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-
 
 import './index.css'
 
-const HeaderLayout = ({ logOut, anchorEl, handleClick, handleClose, basketQuantity }) => {
-
-    const StyledBadge = withStyles((theme) => ({
-        badge: {
-            right: -3,
-            top: 13,
-            border: `2px solid ${theme.palette.background.paper}`,
-            padding: '0 4px',
-        },
-    }))(Badge);
-
+const HeaderLayout = ({ logOut, anchorEl, handleClick, handleClose, basketQuantity, StyledBadge }) => {
+    console.log(basketQuantity)
     return (
         <Box>
             <Box className='header'>
@@ -63,4 +51,4 @@ const HeaderLayout = ({ logOut, anchorEl, handleClick, handleClose, basketQuanti
     )
 }
 
-export default HeaderLayout;
+export default React.memo(HeaderLayout);

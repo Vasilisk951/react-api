@@ -16,11 +16,22 @@
   width: 400px;
   margin: 0 auto;
 }
+.hero__heading {
+  font-size: 18px;
+}
 .hero__item {
   display: flex;
   justify-content: space-between;
   text-transform: uppercase;
   margin: 10px 0;
+}
+.hero__item__head {
+  text-align: left;
+}
+.hero__item__body {
+  width: 300px;
+  text-align: justify;
+  text-transform: none;
 }
 .hero__item-hp {
 }

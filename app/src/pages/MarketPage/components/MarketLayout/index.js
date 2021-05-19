@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react';
 import {
     Button,
     Typography,
@@ -14,7 +14,7 @@ import {
 
 import HeaderContainer from '../../../../commonComponent/header/containers/HeaderContainer';
 
-import './index.css'
+import './index.css';
 
 const MarketLayout = ({
     pokemons,

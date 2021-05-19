@@ -4,7 +4,7 @@ import * as actions from '../actions';
 import { useHistory } from 'react-router-dom';
 import ROUTES from '../../../routes/routesNames';
 
-import MarketLayout from '../components/MarketLayout'
+import MarketLayout from '../components/MarketLayout';
 
 const MarketContainers = () => {
 

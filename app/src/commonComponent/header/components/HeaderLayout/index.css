@@ -23,8 +23,6 @@
 .header__menu {
   border: 1px solid gray;
   border-radius: 5px;
-}
-.MuiBox-root-15 {
   height: fit-content;
   margin: auto 0;
 }

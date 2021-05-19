@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+}
+.card {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  min-height: 1000px;
+}
+.card__item {
+  padding: 10px;
+  width: 200px;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card__item .card__item__img {
+  height: 100px;
+  background-size: contain;
+}
+.pagination {
+  margin: 0 auto;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.pagination__btn {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  border: 1px solid #163a1b;
+  border-radius: 2px;
+  margin: 0 5px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

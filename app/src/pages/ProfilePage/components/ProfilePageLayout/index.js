@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 
-import HeaderContainer from '../../../../commonComponent/header/containers/HeaderContainer';
 import avatar from './images/avatar.png'
 
 import './index.css';
@@ -13,7 +12,6 @@ const ProfilePageLayout = ({
 }) => {
     return (
         <Box>
-            <HeaderContainer />
             <Box className='profile'>
                 <Box className='profile__user'>
                     <Box className='profile__head'>

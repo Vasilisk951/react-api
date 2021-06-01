@@ -8,7 +8,6 @@ import PokemonDetailsContainer from '../pages/PokemonDetailsPage/containers/Poke
 import BasketPageContainers from '../pages/BasketPage/containers/BasketPageContainers';
 import ProfilePageContainer from '../pages/ProfilePage/containers/ProfilePageContainer';
 
-
 import PrivateRoute from './PrivateRoute';
 import ROUTES from './routesNames';
 
@@ -17,15 +16,10 @@ const Routes = () => {
         <Switch>
             <Route exact path={ROUTES.HOME_PAGE} component={HomePageContainer} />
             <Route exact path={ROUTES.REGISTRATION} component={RegistationsContainers} />
-            <PrivateRoute exact path={ROUTES.MARKET} component={MarketContainers} />
+            <PrivateRoute exact path={ROUTES.MARKET_PAGE} component={MarketContainers} />
             <PrivateRoute exact path={ROUTES.POKEMON_DETAILS_PAGE} component={PokemonDetailsContainer} />
             <PrivateRoute exact path={ROUTES.BASKET_PAGE} component={BasketPageContainers} />
             <PrivateRoute exact path={ROUTES.PROFILE_PAGE} component={ProfilePageContainer} />
-
-
-
-
-
         </Switch>
     )
 }

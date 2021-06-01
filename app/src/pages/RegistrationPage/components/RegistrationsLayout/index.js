@@ -26,7 +26,7 @@ const RegistationsLayout = ({ registrationValue, handleFormChange, handleFormSub
     }
     return (
         <Box>
-            <Button variant="contained" color="primary" href="/">home</Button>
+            <Button variant="contained" color="primary" href="/market">home</Button>
             <Box className='message'>
                 Fields marked with * are required
             </Box>

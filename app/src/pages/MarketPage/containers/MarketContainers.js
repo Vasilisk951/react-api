@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams, useHistory } from 'react-router-dom';
+
 import * as actions from '../actions';
-import { useHistory } from 'react-router-dom';
 import ROUTES from '../../../routes/routesNames';
 
 import MarketLayout from '../components/MarketLayout';
@@ -10,13 +11,14 @@ const MarketContainers = () => {
 
     const history = useHistory();
     const dispatch = useDispatch();
+    const params = useParams()
     const marketReducer = useSelector(state => state.marketReducer);
     const pokemon = marketReducer.data;
     const pages = []
 
     useEffect(() => {
-        dispatch(actions.GET_POKEMON_REQUEST(1))
-    }, [dispatch])
+        dispatch(actions.GET_POKEMON_REQUEST(params.id))
+    }, [params, dispatch])
 
     const createNumberPages = () => {
         for (let i = 1; i < 46; i++) {
@@ -34,10 +36,11 @@ const MarketContainers = () => {
     }, [dispatch, pokemon])
 
     const handleGoToDetails = useCallback((id) => {
-        history.push(`${ROUTES.MARKET}/${id}`)
+        history.push(`${ROUTES.MARKET}/pokemon${id}`)
     }, [])
 
     const handleChangePage = useCallback((id) => {
+        history.push(`${ROUTES.MARKET}/page${id}`)
         dispatch(actions.GET_POKEMON_REQUEST(id))
 
         window.scroll({

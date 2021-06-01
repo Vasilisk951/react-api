@@ -17,10 +17,15 @@ const HomePageLayout = ({
     return (
         <div>
             <div className="entry">
-                {!isAuth.isAuth ? <Button className='entry__up' variant="contained" color="primary" href="/registration">sign up</Button> : ''}
                 {!isAuth.isAuth ?
-                    <Button className='entry__in' variant="contained" color="primary" onClick={handleOpenModal}>sign in</Button> :
-                    <Button className='entry__in' variant="contained" color="primary" onClick={handleLogOut} href='/'>log out</Button>
+                    <>
+                        <Button style={{ marginRight: '10px' }} className='entry__in' variant="contained" color="primary" onClick={handleOpenModal}>sign in</Button>
+                        <Button className='entry__in' variant="contained" color="primary" href='/market/registration'>log in</Button>
+                    </> :
+                    <Button className='entry__in' variant="contained" color="primary" onClick={handleLogOut} href='/'>
+                        <Box style={{ display: 'none' }}>{document.location.href = 'market/page1'}</Box>
+                        log out
+                    </Button>
                 }
             </div>
             <Box className='market'>
@@ -28,7 +33,7 @@ const HomePageLayout = ({
                     className='market__btn'
                     variant="contained"
                     color="primary"
-                    href="/market"
+                    href="/market/page1"
                 >
                     Market
                 </Button>

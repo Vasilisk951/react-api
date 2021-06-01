@@ -9,10 +9,7 @@ import {
     CardActionArea,
     CardActions,
     CircularProgress
-
 } from '@material-ui/core/';
-
-import HeaderContainer from '../../../../commonComponent/header/containers/HeaderContainer';
 
 import './index.css';
 
@@ -27,7 +24,6 @@ const MarketLayout = ({
 
     return (
         <Box>
-            <HeaderContainer />
 
             <Box className='card'>
                 {pokemons.isLoading ? <CircularProgress /> : pokemons.data.map(pokemon => (

@@ -3,13 +3,9 @@ import {
     Button,
     Box,
     CircularProgress
-
 } from '@material-ui/core/';
 
-import HeaderContainer from '../../../../commonComponent/header/containers/HeaderContainer';
 import './index.css'
-
-
 
 const PokemonDetailsLayout = ({
     pokemonDetails,
@@ -18,8 +14,6 @@ const PokemonDetailsLayout = ({
     console.log(pokemonDetails)
     return (
         <Box>
-            <HeaderContainer />
-
             {pokemonDetails.isLoading ? < CircularProgress /> :
                 <Box className='hero'>
                     <Box className='hero__header'>
@@ -30,14 +24,12 @@ const PokemonDetailsLayout = ({
                     </Box>
                     <Box className='hero__container'>
                         <Box className='hero__heading'>Abilities</Box>
-                        <Box className='hero__item hero__item__abilities'>
-                            <Box className='hero__item  hero__item__head'>{pokemonDetails.details.abilities[0].title}</Box>
-                            <Box className='hero__item  hero__item__body'>{pokemonDetails.details.abilities[0].description}</Box>
-                        </Box>
-                        <Box className='hero__item hero__item__abilities'>
-                            <Box className='hero__item  hero__item__head'>{pokemonDetails.details.abilities[1].title}</Box>
-                            <Box className='hero__item  hero__item__body'>{pokemonDetails.details.abilities[1].description}</Box>
-                        </Box>
+                        {pokemonDetails.details.abilities.map((item) => (
+                            <Box className='hero__item hero__item__abilities'>
+                                <Box className='hero__item  hero__item__head'>{item.title}</Box>
+                                <Box className='hero__item  hero__item__body'>{item.description}</Box>
+                            </Box>
+                        ))}
                         <Box className='hero__heading'>Stats</Box>
                         <Box className='hero__item hero__item-hp'>
                             <Box>{pokemonDetails.details.stats[0].title}</Box>

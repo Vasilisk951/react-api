@@ -24,11 +24,12 @@ const apiCallMaping = (action) => {
         [getPokemonDetailsAction.GET_POKEMON_DETAILS_REQUEST]: getPokemonDetailsAPI.getPokemonDetails,
         [createOrderAction.BUY_POKEMON_REQUEST]: createOrderAPI.createOrder,
         [getOrderAction.GET_ORDER_REQUEST]: getOrderAPI.getOrder,
-
     };
+
     if (!mapping.hasOwnProperty(action.type)) {
         throw Error('Not mapped action');
     }
+
     return mapping[action.type];
 }
 

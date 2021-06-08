@@ -9,7 +9,7 @@ const HomePageContainer = () => {
     const dispath = useDispatch();
     const isAuth = useSelector(state => state.authReducers);
     const [modal, setModal] = useState('modal');
-    const [loginValue, handleChange] = useState({ email: '', password: '' })
+    const [loginValue, handleChange] = useState({ email: '', password: '' });
 
     const handleOpenModal = useCallback(() => {
         setModal(() => {

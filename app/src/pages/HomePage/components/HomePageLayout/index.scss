@@ -1,3 +1,11 @@
+.heading {
+  text-align: center;
+  font-size: 1.8rem;
+  line-height: 40px;
+  font-family: serif;
+  margin: 30px 0;
+}
+
 .btn {
   padding: 10px;
   text-decoration: none;
@@ -9,7 +17,8 @@
 }
 .entry {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  margin-top: 25px;
 }
 .entry .entry__up {
   margin-right: 15px;

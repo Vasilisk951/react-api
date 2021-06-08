@@ -12,8 +12,6 @@ import {
     Button
 } from '@material-ui/core';
 
-import HeaderContainer from '../../../../commonComponent/header/containers/HeaderContainer';
-
 import './index.css';
 
 const BasketLayout = ({
@@ -25,7 +23,6 @@ const BasketLayout = ({
 }) => {
     return (
         <Box>
-            <HeaderContainer />
             <Box className='basket__name'>
                 Your basket
            </Box>

@@ -1,9 +1,9 @@
 export default {
-    HOME_PAGE: '/',
-    REGISTRATION: '/registration',
-    LOGIN: '/login',
+    HOME_PAGE: '/market',
+    REGISTRATION: '/market/registration',
     MARKET: '/market',
-    POKEMON_DETAILS_PAGE: '/market/:id',
-    BASKET_PAGE: '/basket',
-    PROFILE_PAGE: '/profile',
+    MARKET_PAGE: '/market/page:id',
+    POKEMON_DETAILS_PAGE: '/market/pokemon:id',
+    BASKET_PAGE: '/market/basket',
+    PROFILE_PAGE: '/market/profile',
 }

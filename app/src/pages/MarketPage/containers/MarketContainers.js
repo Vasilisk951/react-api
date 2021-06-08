@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams, useHistory } from 'react-router-dom';
+
 import * as actions from '../actions';
-import { useHistory } from 'react-router-dom';
 import ROUTES from '../../../routes/routesNames';
 
 import MarketLayout from '../components/MarketLayout';
@@ -10,13 +11,21 @@ const MarketContainers = () => {
 
     const history = useHistory();
     const dispatch = useDispatch();
+    const params = useParams()
+
     const marketReducer = useSelector(state => state.marketReducer);
+    const basketPokemon = useSelector(state => state.basketPokemon.pokemons)
+
     const pokemon = marketReducer.data;
     const pages = []
 
+    const [basket, setBasket] = useState(basketPokemon.length)
+
     useEffect(() => {
-        dispatch(actions.GET_POKEMON_REQUEST(1))
-    }, [dispatch])
+        dispatch(actions.GET_POKEMON_REQUEST(params.id))
+    }, [params, dispatch])
+
+    useEffect(() => { }, [basket]);
 
     const createNumberPages = () => {
         for (let i = 1; i < 46; i++) {
@@ -31,13 +40,15 @@ const MarketContainers = () => {
 
     const handleBuyPokemon = useCallback((id) => {
         dispatch(actions.HANDLE_BUY_POKEMON({ id, pokemon }));
+        setBasket(basketPokemon.length);
     }, [dispatch, pokemon])
 
     const handleGoToDetails = useCallback((id) => {
-        history.push(`${ROUTES.MARKET}/${id}`)
-    }, [])
+        history.push(`${ROUTES.MARKET}/pokemon${id}`)
+    }, [basket])
 
     const handleChangePage = useCallback((id) => {
+        history.push(`${ROUTES.MARKET}/page${id}`)
         dispatch(actions.GET_POKEMON_REQUEST(id))
 
         window.scroll({
@@ -45,10 +56,22 @@ const MarketContainers = () => {
             behavior: 'smooth'
         })
 
-    }, [dispatch])
+    }, [dispatch]);
+
+
+    const added = (id) => {
+        let boolean;
+        basketPokemon.forEach(item => {
+            if (id === item.id) {
+                boolean = true;
+            }
+        })
+        return boolean;
+    }
 
     return <MarketLayout
         pokemons={marketReducer}
+        basketPokemon={added}
         capitalizeFirstLetter={capitalizeFirstLetter}
         hendlePokemonBuy={handleBuyPokemon}
         handleGoToDetails={handleGoToDetails}
@@ -57,4 +80,4 @@ const MarketContainers = () => {
     />
 }
 
-export default MarketContainers;
+export default React.memo(MarketContainers);

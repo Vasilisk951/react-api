@@ -8,10 +8,13 @@ import BasketLayout from '../components/BasketLauout'
 
 const BasketPageContainers = () => {
 
+    const dispatch = useDispatch();
+
     const products = useSelector(state => state.basketPokemon.pokemons);
     const userId = useSelector(state => state.authReducers.id)
-    const dispatch = useDispatch();
+
     const [totalPrice, setTotalPrice] = useState();
+
     let price
 
     useEffect(() => {

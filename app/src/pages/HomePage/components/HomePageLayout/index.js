@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button, TextField, Typography, Box } from '@material-ui/core/';
 
-import './index.css'
+import './index.scss'
 
 const HomePageLayout = ({
     modalClass,
@@ -16,6 +16,14 @@ const HomePageLayout = ({
 }) => {
     return (
         <div>
+            <Box className='heading'>
+                <Box>
+                    Welcome!
+                </Box>
+                <Box>
+                    To continue, please login or register
+                </Box>
+            </Box>
             <div className="entry">
                 {!isAuth.isAuth ?
                     <>

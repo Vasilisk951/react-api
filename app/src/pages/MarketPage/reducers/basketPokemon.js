@@ -12,11 +12,13 @@ const basketPokemonReducer = handleActions({
         const pokemonID = payload.id;
         const pokemonData = payload.pokemon;
         let positionIdInArray;
+
         for (let i = 0; i < pokemonData.length; i++) {
             if (pokemonID === pokemonData[i].id) {
                 positionIdInArray = i
             }
         }
+
         const basket = stateCopy.pokemons.find((item) => item.id === pokemonID)
 
         if (!basket) {

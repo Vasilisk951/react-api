@@ -15,19 +15,22 @@ import './index.css';
 
 const MarketLayout = ({
     pokemons,
+    basketPokemon,
     capitalizeFirstLetter,
     hendlePokemonBuy,
     handleGoToDetails,
     pages,
-    handleChangePage
+    handleChangePage,
 }) => {
 
     return (
         <Box>
-
             <Box className='card'>
                 {pokemons.isLoading ? <CircularProgress /> : pokemons.data.map(pokemon => (
-                    <Card className='card__item' key={pokemon.id}>
+                    <Card
+                        className='card__item'
+                        key={pokemon.id}
+                        style={{ border: basketPokemon(pokemon.id) ? '2px solid #48d848' : '' }}>
                         <CardActionArea>
                             <CardMedia
                                 onClick={() => handleGoToDetails(pokemon.id)}
@@ -64,8 +67,8 @@ const MarketLayout = ({
                     </Box>
                 ))}
             </Box>
-        </Box>
+        </Box >
     )
 }
 
-export default MarketLayout;
+export default React.memo(MarketLayout);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { Badge } from '@material-ui/core/';
@@ -7,20 +7,22 @@ import HeaderLayout from '../components/HeaderLayout/index';
 
 const HeaderContainer = () => {
     const basketQuantity = useSelector(state => state.basketPokemon.pokemons);
+    const isAuth = useSelector(state => state.authReducers.isAuth)
 
     const [anchorEl, setAnchorEl] = useState(null);
 
-    const logOut = () => {
+    const logOut = useCallback(() => {
         localStorage.clear();
-    }
+    }, [])
 
-    const handleClick = (event) => {
+    const handleClick = useCallback((event) => {
         setAnchorEl(event.currentTarget);
-    };
+    }, []);
 
-    const handleClose = () => {
+    const handleClose = useCallback(() => {
         setAnchorEl(null);
-    };
+    }, []);
+
     const StyledBadge = withStyles((theme) => ({
         badge: {
             right: -3,
@@ -31,6 +33,7 @@ const HeaderContainer = () => {
     }))(Badge);
 
     return <HeaderLayout
+        isAuth={isAuth}
         logOut={logOut}
         anchorEl={anchorEl}
         handleClick={handleClick}

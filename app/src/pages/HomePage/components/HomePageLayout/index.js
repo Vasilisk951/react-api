@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button, TextField, Typography, Box } from '@material-ui/core/';
 
-import './index.scss'
+import './index.css'
 
 const HomePageLayout = ({
     modalClass,
@@ -18,17 +18,17 @@ const HomePageLayout = ({
         <div>
             <Box className='heading'>
                 <Box>
-                    Welcome!
+                    Welcome to the site.
                 </Box>
                 <Box>
-                    To continue, please login or register
+                    Log in to view the directory.
                 </Box>
             </Box>
             <div className="entry">
                 {!isAuth.isAuth ?
                     <>
-                        <Button style={{ marginRight: '10px' }} className='entry__in' variant="contained" color="primary" onClick={handleOpenModal}>sign in</Button>
-                        <Button className='entry__in' variant="contained" color="primary" href='/market/registration'>log in</Button>
+                        <Button style={{ marginRight: '10px' }} className='entry__in' variant="contained" color="primary" onClick={handleOpenModal}>Sign in</Button>
+                        <Button className='entry__in' variant="contained" color="primary" href='/market/registration'>Sign up</Button>
                     </> :
                     <Button className='entry__in' variant="contained" color="primary" onClick={handleLogOut} href='/'>
                         <Box style={{ display: 'none' }}>{document.location.href = 'market/page1'}</Box>

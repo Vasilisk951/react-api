@@ -51,6 +51,9 @@
   right: 0;
 }
 .modal__content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 3;
   background-color: #fff;
   padding: 20px;

@@ -9,6 +9,7 @@ import './index.css'
 
 const PokemonDetailsLayout = ({
     pokemonDetails,
+    basketPokemon,
     buyPokemon
 }) => {
     console.log(pokemonDetails)
@@ -18,6 +19,7 @@ const PokemonDetailsLayout = ({
                 <Box className='hero'>
                     <Box className='hero__header'>
                         {pokemonDetails.details.name}
+                        {basketPokemon() ? <Box component='span' style={{ display: 'inline-block', transform: 'scale(0.5)' }}>&#9989;</Box> : ''}
                     </Box>
                     <Box className='hero__img'>
                         <img className='hero__img-img' src={pokemonDetails.details.image} alt={pokemonDetails.details.name}></img>
@@ -56,6 +58,7 @@ const PokemonDetailsLayout = ({
                             <Box>{pokemonDetails.details.stats[5].value}</Box>
                         </Box>
                     </Box>
+                    {basketPokemon() ? <Box style={{ marginTop: '15px', fontSize: '1.1rem' }}>This item is in the cart</Box> : ''}
                     <Button
                         className='hero-buy'
                         variant="contained"

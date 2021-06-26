@@ -23,9 +23,7 @@ const MarketContainers = () => {
 
     useEffect(() => {
         dispatch(actions.GET_POKEMON_REQUEST(params.id))
-    }, [params, dispatch])
-
-    useEffect(() => { }, [basket]);
+    }, [params, dispatch]);
 
     const createNumberPages = () => {
         for (let i = 1; i < 46; i++) {

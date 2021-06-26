@@ -5,21 +5,21 @@ import { Box, Button } from '@material-ui/core';
 
 import './index.css'
 
-const RegistationsLayout = ({ registrationValue, handleFormChange, handleFormSubmit }) => {
+const RegistationsLayout = ({ registrationValue, handleFormChange, handleFormSubmit, isSignUp }) => {
     const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
     const PASSORD_REGEXP = /^(?=.*[A-Z].)(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/;
     const PHONE_REGEXP = /^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/;
 
 
     const checkForm = () => {
-        const { email, firstName, lastName, gender, password, repeatPassword, phone } = registrationValue;
+        const { email, firstName, lastName, gender, password, phone } = registrationValue;
         if (EMAIL_REGEXP.test(email) &&
             !!firstName &&
             !!lastName &&
             !!gender &&
             !!phone &&
-            PHONE_REGEXP.test(phone) &&
-            !!repeatPassword && password === repeatPassword) {
+            PHONE_REGEXP.test(phone)
+        ) {
             return false;
         }
         return true;
@@ -125,20 +125,6 @@ const RegistationsLayout = ({ registrationValue, handleFormChange, handleFormSub
                         The minimum password length is 8 characters. Password must contain at least 1 uppercase letter, 2 lowercase letters and 3 numbers
                     </Box>
                 </label>
-
-                <label>
-                    <Box className='field__name'>Repeat password <span>*</span></Box>
-                    <input
-                        name='repeatPassword'
-                        type='password'
-                        required
-                        value={registrationValue.repeatPassword}
-                        onChange={(event) => handleFormChange(event)}
-                    />
-                    <Box className='repeatPassword'>
-                        {registrationValue.repeatPassword === registrationValue.password && registrationValue.repeatPassword !== '' ? 'Passwords match ✅' : 'Password mismatch ❌'}
-                    </Box>
-                </label>
                 <label>
                     <Box className='field__name'>Phone <span>*</span></Box>
                     <input
@@ -156,6 +142,8 @@ const RegistationsLayout = ({ registrationValue, handleFormChange, handleFormSub
                     disabled={checkForm()}
                 >sing in</Button>
             </form>
+
+            { }
         </Box>
     )
 }

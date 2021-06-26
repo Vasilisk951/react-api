@@ -1,11 +1,13 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useCallback, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { Badge } from '@material-ui/core/';
 
 import HeaderLayout from '../components/HeaderLayout/index';
 
 const HeaderContainer = () => {
+    const dispatch = useDispatch();
+
     const basketQuantity = useSelector(state => state.basketPokemon.pokemons);
     const isAuth = useSelector(state => state.authReducers.isAuth)
 

@@ -21,6 +21,7 @@ const MarketLayout = ({
     handleGoToDetails,
     pages,
     handleChangePage,
+    activePage,
 }) => {
 
     return (
@@ -57,16 +58,32 @@ const MarketLayout = ({
                 ))}
             </Box>
             <Box className='pagination'>
+                {console.log('updated')}
                 {pages.map(index => (
-                    <Box
-                        key={index}
-                        className='pagination__btn'
-                        onClick={() => handleChangePage(index)}
-                    >
-                        {index}
-                    </Box>
-                ))}
-            </Box>
+                    <>
+                        {activePage == index ?
+                            < Box
+                                key={index}
+                                className='pagination__btn'
+                                onClick={() => handleChangePage(index)}
+                            >
+                                {index}
+                            </Box>
+                            :
+                            <Box
+                                style={{ backgroundColor: 'yellow' }}
+                                key={index}
+                                className='pagination__btn'
+                                onClick={() => handleChangePage(index)}
+                            >
+                                {index}
+                            </Box>
+                        }
+                    </>
+
+                ))
+                }
+            </Box >
         </Box >
     )
 }

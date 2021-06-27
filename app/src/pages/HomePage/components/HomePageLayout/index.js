@@ -36,17 +36,6 @@ const HomePageLayout = ({
                     </Button>
                 }
             </div>
-            <Box className='market'>
-                <Button
-                    className='market__btn'
-                    variant="contained"
-                    color="primary"
-                    href="/market/page1"
-                >
-                    Market
-                </Button>
-
-            </Box>
             <div className={isAuth.isAuth ? 'modal' : modalClass} >
                 <div className='modal__fon' onClick={handleCloseModal}></div>
                 <div className='modal__content'>

@@ -5,7 +5,7 @@ import { Box, Button } from '@material-ui/core';
 
 import './index.css'
 
-const RegistationsLayout = ({ registrationValue, handleFormChange, handleFormSubmit, isSignUp }) => {
+const RegistationsLayout = ({ registrationValue, handleFormChange, handleFormSubmit, isSignUp, showPassword, handleShowPassword }) => {
     const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
     const PASSORD_REGEXP = /^(?=.*[A-Z].)(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/;
     const PHONE_REGEXP = /^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/;
@@ -110,17 +110,25 @@ const RegistationsLayout = ({ registrationValue, handleFormChange, handleFormSub
                         <option name='male' value='male'>male</option>
                     </select>
                 </label>
-                <label>
+                <label style={{ position: 'relative' }}>
                     <Box className='field__name'>Password <span>*</span></Box>
                     <input
                         className='password'
                         name='password'
-                        type='password'
+                        type={showPassword ? 'text' : 'password'}
                         minLength='8'
                         required
                         value={registrationValue.password}
                         onChange={(event) => handleFormChange(event)}
                     />
+                    <span
+                        style={{ position: 'absolute', top: '30px', right: '5px', cursor: 'pointer', transform: 'scale(1.2)' }}
+                        onMouseDown={() => handleShowPassword(true)}
+                        onMouseUp={() => handleShowPassword(false)}
+                        onMouseOut={() => handleShowPassword(false)}
+                    >
+                        {showPassword ? '👀' : '👽'}
+                    </span>
                     <Box className='password__mesage'>
                         The minimum password length is 8 characters. Password must contain at least 1 uppercase letter, 2 lowercase letters and 3 numbers
                     </Box>

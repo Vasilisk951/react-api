@@ -25,7 +25,7 @@ const BasketLayout = ({
         <Box>
             <Box className='basket__name'>
                 Your basket
-           </Box>
+            </Box>
             <TableContainer component={Paper}>
                 <Table size="small" aria-label="a dense table">
                     <TableHead>

@@ -60,7 +60,7 @@ const PokemonDetailsLayout = ({
                     </Box>
                     {basketPokemon() ? <Box style={{ marginTop: '15px', fontSize: '1.1rem' }}>This item is in the cart</Box> : ''}
                     <Button
-                        className='hero-buy'
+                        className={'hero__buy'}
                         variant="contained"
                         color="primary"
                         onClick={() => buyPokemon(pokemonDetails.details.id)}

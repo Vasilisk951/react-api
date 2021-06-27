@@ -10,6 +10,7 @@ import basketPokemon from '../pages/MarketPage/reducers/basketPokemon.js';
 import pokemonDetails from '../pages/PokemonDetailsPage/reducers';
 import basketPageReducer from '../pages/BasketPage/reducers';
 import orderList from '../pages/ProfilePage/reducers';
+import activePage from '../pages/MarketPage/reducers/activePage';
 
 const authBlackListedfields = createBlacklistFilter('authReducers', ['isLoading', 'errors']);
 
@@ -27,7 +28,8 @@ const rootReducer = combineReducers({
     basketPokemon,
     pokemonDetails,
     basketPageReducer,
-    orderList
+    orderList,
+    activePage,
 });
 
 

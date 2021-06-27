@@ -2,22 +2,15 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import RegistationsLayout from '../components/RegistrationsLayout';
-import * as actions from '../actions'
+import * as actions from '../actions';
 
 
 const RegistationsContainers = () => {
 
+    const dispatch = useDispatch();
     const isSignUp = useSelector(state => state.registrationForm.message);
 
-    useEffect(() => {
-        if (!!isSignUp) {
-            alert('Registration was successuf');
-            setTimeout(() => {
-                window.location.href = '/market'
-            }, 500)
-        }
-    }, [isSignUp])
-
+    const [showPassword, setShowPassword] = useState(false);
     const [registrationValue, setRegistrationValue] = useState({
         email: "",
         firstName: "",
@@ -31,8 +24,16 @@ const RegistationsContainers = () => {
         gender: "",
         password: "",
         phone: ""
-    })
-    const dispatch = useDispatch();
+    });
+
+    useEffect(() => {
+        if (!!isSignUp) {
+            alert('Registration was successuf');
+            setTimeout(() => {
+                window.location.href = '/market'
+            }, 500)
+        }
+    }, [isSignUp]);
 
     const handleFormChange = useCallback((event) => {
         let value = event.target.value;
@@ -66,10 +67,16 @@ const RegistationsContainers = () => {
         dispatch(actions.HANDLE_REGISTRATION_FORM_REQUEST(user))
     }, [registrationValue, dispatch]);
 
+    const handleShowPassword = useCallback((boolean) => {
+        setShowPassword(boolean);
+    }, []);
+
     return <RegistationsLayout
         registrationValue={registrationValue}
         handleFormChange={handleFormChange}
         handleFormSubmit={handleFormSubmit}
+        showPassword={showPassword}
+        handleShowPassword={handleShowPassword}
     />
 };
 

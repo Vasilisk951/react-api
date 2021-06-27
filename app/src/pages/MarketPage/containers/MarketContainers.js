@@ -13,6 +13,7 @@ const MarketContainers = () => {
     const dispatch = useDispatch();
     const params = useParams()
 
+    const activePage = useSelector(state => state.activePage.page);
     const marketReducer = useSelector(state => state.marketReducer);
     const basketPokemon = useSelector(state => state.basketPokemon.pokemons)
 
@@ -22,6 +23,8 @@ const MarketContainers = () => {
     const [basket, setBasket] = useState(basketPokemon.length)
 
     useEffect(() => {
+        console.log(activePage)
+        console.log(history)
         dispatch(actions.GET_POKEMON_REQUEST(params.id))
     }, [params, dispatch]);
 
@@ -47,6 +50,7 @@ const MarketContainers = () => {
 
     const handleChangePage = useCallback((id) => {
         history.push(`${ROUTES.MARKET}/page${id}`)
+        dispatch(actions.HANDLE_CHANCHE_PAGE(id))
         dispatch(actions.GET_POKEMON_REQUEST(id))
 
         window.scroll({
@@ -55,7 +59,6 @@ const MarketContainers = () => {
         })
 
     }, [dispatch]);
-
 
     const added = (id) => {
         let boolean;
@@ -75,6 +78,7 @@ const MarketContainers = () => {
         handleGoToDetails={handleGoToDetails}
         pages={pages}
         handleChangePage={handleChangePage}
+        activePage={activePage}
     />
 }
 

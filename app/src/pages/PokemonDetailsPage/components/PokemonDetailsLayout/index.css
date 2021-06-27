@@ -1,6 +1,7 @@
 .hero {
   text-align: center;
   margin-top: 50px;
+  padding-bottom: 30px;
 }
 .hero__header {
   text-transform: uppercase;
@@ -13,7 +14,7 @@
 .hero__img-img {
 }
 .hero__container {
-  width: 400px;
+  width: 470px;
   margin: 0 auto;
 }
 .hero__heading {
@@ -45,10 +46,6 @@
 }
 .hero__item-speed {
 }
-div .hero-buy {
-  margin-top: 20px;
-  background-color: rgb(206, 126, 34);
-}
-div .hero-buy:hover {
-  background-color: rgb(158, 49, 22);
+div .hero__buy {
+  margin-top: 30px;
 }
